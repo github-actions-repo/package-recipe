@@ -39,10 +39,10 @@ jobs:
       - name: Run tests
         run: npm test
           
-      - name: Publish package 
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Publish package 
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Generate SBoM
         env:
