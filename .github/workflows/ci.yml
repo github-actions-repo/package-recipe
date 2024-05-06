@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -85,7 +85,7 @@ jobs:
           category: "/language:javascript-typescript"
 
   deploy:
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
     needs: build
     runs-on: ubuntu-latest
     concurrency:
@@ -110,7 +110,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   publish:
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
