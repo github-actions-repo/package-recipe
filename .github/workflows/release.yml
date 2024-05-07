@@ -53,6 +53,34 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28" \
             /repos/github-actions-repo/package-recipe/dependency-graph/sbom > sbom.json
 
+      # # A GitHub Action for creating a software bill of materials (SBOM) using Syft.
+      # - name: Anchore SBOM Action
+      #   uses: anchore/sbom-action@v0.15.11
+      #   with:
+      #     path: .
+      #     image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      #     registry-username: ${{ github.actor }}
+      #     registry-password: ${{ secrets.GITHUB_TOKEN }}
+
+      # # CDX (https://cyclonedx.org/) is more focused on application security.
+      # - name: CycloneDX .NET Generate SBOM
+      #   uses: CycloneDX/gh-dotnet-generate-sbom@v1
+      #   with:
+      #     path: ./CycloneDX.sln
+      #     github-bearer-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Upload a Build Artifact
+      #   uses: actions/upload-artifact@v4.3.3
+      #   with:
+      #     path: bom.xml
+
+      # - uses: DependencyTrack/gh-upload-sbom@v3.0.0
+      #   with:
+      #     serverhostname: 'your-instance.org'
+      #     apikey: ${{ secrets.DEPENDENCYTRACK_APIKEY }}
+      #     projectname: 'Your Project Name'
+      #     projectversion: 'master'
+
       - name: Upload SBoM to release
         uses: svenstaro/upload-release-action@v2
         with:
